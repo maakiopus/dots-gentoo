@@ -1,0 +1,5 @@
+games-util/mangohud mangoapp mangoplot
+
+dev-python/pillow webp
+media-libs/imgui glfw
+media-libs/freetype harfbuzz

@@ -1,0 +1,4 @@
+# required by dev-util/flatpak-builder-1.4.4::gentoo
+# required by @selected
+# required by @world (argument)
+dev-libs/appstream compose

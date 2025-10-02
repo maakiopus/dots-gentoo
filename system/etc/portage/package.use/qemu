@@ -1,0 +1,19 @@
+app-emulation/qemu QEMU_SOFTMMU_TARGETS: * QEMU_USER_TARGETS: *
+app-emulation/qemu spice pulseaudio usb opengl virgl virtfs static static-user
+# required by app-emulation/qemu-10.0.0::gentoo[static-user]
+# required by @selected
+# required by @world (argument)
+>=dev-libs/glib-2.84.2 static-libs
+# required by app-emulation/qemu-10.0.0::gentoo[static-user]
+# required by @selected
+# required by @world (argument)
+>=sys-libs/zlib-1.3.1-r1 static-libs
+# required by app-emulation/qemu-10.0.0::gentoo[static-user,xattr]
+# required by @selected
+# required by @world (argument)
+>=sys-apps/attr-2.5.2-r1 static-libs
+# required by dev-libs/glib-2.84.2::gentoo
+# required by app-emulation/qemu-10.0.0::gentoo[static-user]
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libpcre2-10.45 static-libs

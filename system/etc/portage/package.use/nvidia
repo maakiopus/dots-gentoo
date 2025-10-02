@@ -1,0 +1,2 @@
+gui-libs/egl-gbm abi_x86_32
+gui-libs/egl-wayland abi_x86_32

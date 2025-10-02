@@ -1,0 +1,9 @@
+net-dns/avahi -qt5
+net-wireless/wpa_supplicant -qt5
+app-text/poppler -qt5
+app-crypt/gpgme -qt5
+x11-themes/kvantum -qt5
+app-crypt/pinentry -qt5
+
+# required by app-office/onlyoffice-bin (argument)
+dev-qt/qtgui eglfs

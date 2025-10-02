@@ -1,0 +1,19 @@
+# required by app-emulation/virt-manager-4.1.0-r1::gentoo[-test,gui]
+# required by virt-manager (argument)
+>=net-misc/spice-gtk-0.42-r4 usbredir
+# required by app-emulation/libvirt-10.3.0-r2::gentoo[virt-network]
+# required by app-emulation/libvirt-glib-5.0.0::gentoo
+# required by app-emulation/virt-manager-4.1.0-r1::gentoo[-test]
+# required by virt-manager (argument)
+>=net-dns/dnsmasq-2.90 script
+# required by app-crypt/swtpm-0.8.2::gentoo
+# required by app-emulation/libvirt-10.3.0-r2::gentoo[qemu]
+# required by app-emulation/libvirt-glib-5.0.0::gentoo
+# required by app-emulation/virt-manager-4.1.0-r1::gentoo[-test]
+# required by virt-manager (argument)
+>=net-libs/gnutls-3.8.0 pkcs11 tools
+# required by net-libs/gnutls-3.8.0::gentoo[pkcs11]
+# required by x11-libs/vte-0.74.2::gentoo[crypt]
+# required by app-emulation/virt-manager-4.1.0-r1::gentoo[-test,gui]
+# required by virt-manager (argument)
+>=app-crypt/p11-kit-0.25.3-r2 abi_x86_32

@@ -1,0 +1,16 @@
+gui-apps/waybar experimental network audio tray wifi pipewire mpris
+# required by gui-apps/waybar-0.10.3::gentoo[tray]
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libdbusmenu-16.04.0-r2 gtk3
+# required by kde-plasma/libplasma-5.116.0::gentoo
+# required by kde-plasma/kscreenlocker-5.27.11::gentoo
+# required by kde-plasma/libkworkspace-5.27.11::gentoo
+# required by kde-plasma/kde-cli-tools-5.27.11::gentoo
+# required by kde-plasma/kwin-5.27.11-r1::gentoo
+>=kde-frameworks/kconfig-5.116.0 qml
+# required by kde-plasma/kwin-5.27.11-r1::gentoo
+# required by kde-plasma/libkworkspace-5.27.11::gentoo
+# required by kde-plasma/kde-cli-tools-5.27.11::gentoo
+# required by kde-plasma/kscreenlocker-5.27.11::gentoo
+>=kde-frameworks/kitemmodels-5.116.0 qml

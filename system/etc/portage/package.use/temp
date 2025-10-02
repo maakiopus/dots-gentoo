@@ -1,0 +1,12 @@
+
+# required by media-libs/mesa-24.2.4::gentoo[llvm,-video_cards_r600,-video_cards_radeonsi,video_cards_radeon]
+# required by app-emulation/qemu-9.0.2-r2::gentoo[opengl]
+# required by @selected
+# required by @world (argument)
+>=virtual/libelf-3-r1 abi_x86_32
+# required by virtual/libelf-3-r1::gentoo
+# required by sys-kernel/gentoo-kernel-6.11.2::gentoo
+# required by virtual/dist-kernel-6.11.2::gentoo
+>=dev-libs/elfutils-0.191-r2 abi_x86_32
+
+# dev-libs/glib -introspection

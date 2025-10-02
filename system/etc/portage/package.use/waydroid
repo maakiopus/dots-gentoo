@@ -1,0 +1,2 @@
+sys-libs/libcap static-libs
+app-containers/waydroid-images system-gapps -system-vanilla

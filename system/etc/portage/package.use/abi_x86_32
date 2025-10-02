@@ -1,0 +1,9 @@
+x11-drivers/nvidia-drivers abi_x86_32
+llvm-core/llvm abi_x86_32
+
+# for network manager
+dev-db/sqlite abi_x86_32
+sys-libs/readline abi_x86_32
+
+sys-libs/gdbm abi_x86_32
+app-arch/xz-utils abi_x86_32

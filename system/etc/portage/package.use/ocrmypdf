@@ -1,0 +1,14 @@
+# required by app-text/OCRmyPDF-16.10.0::guru
+# required by app-text/OCRmyPDF (argument)
+app-text/tesseract webp
+# required by app-text/OCRmyPDF-16.10.0::guru
+# required by app-text/OCRmyPDF (argument)
+dev-python/pillow jpeg2k
+# required by media-gfx/img2pdf-0.5.1::gentoo[gui,python_targets_python3_12]
+# required by app-text/OCRmyPDF-16.10.0::guru
+# required by app-text/OCRmyPDF (argument)
+dev-lang/python tk
+# required by app-text/tesseract-5.5.0::gentoo
+# required by app-text/OCRmyPDF-16.10.0::guru
+# required by app-text/OCRmyPDF (argument)
+media-libs/leptonica webp

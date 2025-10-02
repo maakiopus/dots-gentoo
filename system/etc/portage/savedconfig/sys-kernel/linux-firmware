@@ -1,0 +1,15 @@
+rtl_nic/rtl8168h-2.fw
+amdgpu/navy_flounder_sos.bin
+amdgpu/navy_flounder_ta.bin
+amdgpu/navy_flounder_smc.bin
+amdgpu/navy_flounder_dmcub.bin
+amdgpu/navy_flounder_pfp.bin
+amdgpu/navy_flounder_me.bin
+amdgpu/navy_flounder_ce.bin
+amdgpu/navy_flounder_rlc.bin
+amdgpu/navy_flounder_mec.bin
+amdgpu/navy_flounder_mec2.bin
+amdgpu/navy_flounder_sdma.bin
+amdgpu/navy_flounder_vcn.bin
+amdgpu/navy_flounder_vcn.bin
+rtl_bt/rtl8761bu_fw.bin

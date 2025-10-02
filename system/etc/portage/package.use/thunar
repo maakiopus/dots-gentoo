@@ -1,0 +1,4 @@
+xfce-base/thunar -trash-panel-plugin udisks libnotify exif
+xfce-base/tumbler ffmpeg gstreamer
+gnome-base/gvfs mtp nfs samba zeroconf
+xfce-extra/thunar-vcs-plugin -subversion

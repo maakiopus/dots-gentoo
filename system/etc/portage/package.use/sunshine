@@ -1,0 +1,2 @@
+net-misc/sunshine libdrm vaapi -X trayicon
+net-libs/nodejs npm

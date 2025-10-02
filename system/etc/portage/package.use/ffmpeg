@@ -1,0 +1,1 @@
+>=media-video/ffmpeg-6.1.1-r5 -cpu_flags_x86_aes libass lzma opus theora vpx

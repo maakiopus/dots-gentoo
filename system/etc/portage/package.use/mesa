@@ -1,0 +1,2 @@
+media-libs/mesa -opencl -video_cards_intel -spirv
+dev-util/spirv-tools abi_x86_32
