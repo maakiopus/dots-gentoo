@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+
+TOFI_CONFIG="${HOME}/.config/tofi/config-cliphist"
+EDITOR="${EDITOR:-nano}"
+
+# First menu: list clipboard entries
+entries=$(cliphist list)
+menu_input="Clear history"$'\n'"$entries"
+
+selection=$(echo "$menu_input" | tofi --config "$TOFI_CONFIG" --prompt-text "Clipboard")
+
+[[ -z "$selection" ]] && exit 1
+
+# Handle clear
+if [[ "$selection" == "Clear history" ]]; then
+    cliphist wipe
+    exit 0
+fi
+
+# Decode into temp file (binary-safe)
+tmpfile=$(mktemp)
+cliphist decode <<< "$selection" > "$tmpfile"
+
+# Get MIME and file info
+mime=$(file -b --mime-type "$tmpfile")
+desc=$(file -b "$tmpfile")
+
+# Build action menu
+action_menu="Copy"$'\n'
+[[ "$mime" != text/* ]] && action_menu+="Open"$'\n'
+[[ "$mime" == text/* ]] && action_menu+="Edit"$'\n'
+action_menu+="Delete"$'\n'
+action_menu+="— $desc"  # Unactionable info line
+
+# Second menu: action selection
+action=$(echo "$action_menu" | tofi --config "$TOFI_CONFIG" --prompt-text "action:")
+
+[[ -z "$action" || "$action" == "— $desc" ]] && exit 0
+
+case "$action" in
+    "Copy")
+        wl-copy < "$tmpfile"
+        ;;
+    "Edit")
+        tmpedit=$(mktemp --suffix=".txt" /tmp/clipedit-XXXXXX)
+        cp "$tmpfile" "$tmpedit"
+        "$EDITOR" "$tmpedit"
+        wl-copy < "$tmpedit"
+        ;;
+    "Open")
+        case "$mime" in
+            image/png) ext="png" ;;
+            image/jpeg) ext="jpg" ;;
+            image/gif) ext="gif" ;;
+            image/webp) ext="webp" ;;
+            image/*) ext="img" ;;
+            video/mp4) ext="mp4" ;;
+            video/*) ext="vid" ;;
+            audio/mpeg) ext="mp3" ;;
+            audio/*) ext="audio" ;;
+            application/pdf) ext="pdf" ;;
+            application/zip) ext="zip" ;;
+            text/plain) ext="txt" ;;
+            *) ext="bin" ;;
+        esac
+
+        openfile="$tmpfile.$ext"
+        mv "$tmpfile" "$openfile"
+        setsid xdg-open "$openfile" >/dev/null 2>&1 &
+        ;;
+    "Delete")
+        cliphist delete <<< "$selection"
+        ;;
+esac

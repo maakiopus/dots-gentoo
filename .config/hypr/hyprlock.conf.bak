@@ -1,0 +1,136 @@
+# GENERAL
+general {
+    no_fade_in = false
+    grace = 3
+    disable_loading_bar = true
+    hide_cursor = true
+}
+
+# BACKGROUND
+background {
+    path = ~/.background.png
+    blur_passes = 2
+    contrast = 0.8916
+    brightness = 0.8172
+    vibrancy = 0.1696
+    vibrancy_darkness = 0.0
+}
+
+# INPUT FIELD
+input-field {
+    size = 250, 60
+    outline_thickness = 2
+    dots_size = 0.2
+    dots_spacing = 0.2
+    dots_center = true
+    outer_color = rgba(0, 0, 0, 0)
+    inner_color = rgba(100, 114, 125, 0.4)
+    font_color = rgb(200, 200, 200)
+    fade_on_empty = false
+    font_family = SF Pro Display Bold
+    placeholder_text = <i><span foreground="##ffffff99">Enter Pass</span></i>
+    hide_input = false
+    position = 0, -225
+    halign = center
+    valign = center
+}
+
+# CLOCK (HH:MM)
+label {
+    text = cmd[update:1000] date +"%H:%M"
+    color = rgba(216, 222, 233, 0.70)
+    font_size = 130
+    font_family = SF Pro Display Bold
+    position = 0, 240
+    halign = center
+    valign = center
+}
+
+# DATE (Day, dd Month)
+label {
+    text = cmd[update:1000] date +"%A, %d %B"
+    color = rgba(216, 222, 233, 0.70)
+    font_size = 30
+    font_family = SF Pro Display Bold
+    position = 0, 105
+    halign = center
+    valign = center
+}
+
+# USER AVATAR
+image {
+    path = ~/.face.png
+    border_color = 0xffdddddd
+    border_size = 0
+    size = 180
+    rounding = -1
+    rotate = 0
+    reload_time = -1
+    position = 0, -35
+    halign = center
+    valign = center
+}
+
+### --- MUSIC CONTROLS (bottom aligned) --- ###
+
+# Album Art
+image {
+    path =
+    size = 70
+    rounding = 8
+    border_size = 0
+    reload_time = 2
+    reload_cmd = playerctl metadata mpris:artUrl 2>/dev/null | sed 's|file://||'
+    position = -450, -40
+    halign = center
+    valign = bottom
+}
+
+# Title
+label {
+    text = cmd[update:1000] playerctl metadata xesam:title 2>/dev/null | cut -c1-40
+    color = rgba(216,222,233,0.85)
+    font_size = 18
+    font_family = SF Pro Display Bold
+    position = -360, -55
+    halign = left
+    valign = bottom
+}
+
+# Artist
+label {
+    text = cmd[update:1000] playerctl metadata xesam:artist 2>/dev/null | cut -c1-35
+    color = rgba(216,222,233,0.65)
+    font_size = 14
+    font_family = SF Pro Display Bold
+    position = -360, -30
+    halign = left
+    valign = bottom
+}
+
+# Status (Play / Pause Icon)
+label {
+    text = cmd[update:1000] status=$(playerctl status 2>/dev/null); \
+           if [[ $status == "Playing" ]]; then echo "󰎆"; \
+           elif [[ $status == "Paused" ]]; then echo "󱑽"; fi
+    color = rgba(216,222,233,0.85)
+    font_size = 24
+    font_family = SF Pro Display Bold
+    position = 360, -40
+    halign = right
+    valign = bottom
+}
+
+# Source (App name + icon)
+label {
+    text = cmd[update:2000] trackid=$(playerctl metadata mpris:trackid 2>/dev/null); \
+           if [[ "$trackid" == *"spotify"* ]]; then echo "Spotify "; \
+           elif [[ "$trackid" == *"firefox"* ]]; then echo "Firefox 󰈹"; \
+           elif [[ "$trackid" == *"chromium"* ]]; then echo "Chrome "; fi
+    color = rgba(216,222,233,0.55)
+    font_size = 12
+    font_family = SF Pro Display Bold
+    position = 360, -20
+    halign = right
+    valign = bottom
+}

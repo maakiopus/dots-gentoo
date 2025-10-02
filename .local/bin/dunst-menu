@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+# Get full dunst history
+history=$(dunstctl history)
+
+# Create menu lines with indices: "0: summary — body"
+menu_items=$(echo "$history" | jq -r '
+  .data[0] |
+  to_entries[] |
+  "\(.key): \(.value.summary.data) — \(.value.body.data)"
+')
+
+# Add "Clear history" option at top
+menu_input="Clear history"$'\n'"$menu_items"
+
+# Launch tofi with fuzzy match enabled
+selection=$(echo "$menu_input" | tofi --prompt-text="Dunst:" --fuzzy-match=true --config ~/.config/tofi/config-dunst)
+
+# Exit if nothing selected
+[[ -z "$selection" ]] && exit 1
+
+# Handle Clear option
+if [[ "$selection" == "Clear history" ]]; then
+    dunstctl history-clear
+    exit 0
+fi
+
+# Extract index (e.g., "4: something — something" => 4)
+index=$(echo "$selection" | cut -d':' -f1)
+
+# Get ID from original history
+id=$(echo "$history" | jq -r ".data[0][$index].id.data // empty")
+
+# Only pop if a valid ID is found
+[[ -n "$id" ]] && dunstctl history-pop "$id"

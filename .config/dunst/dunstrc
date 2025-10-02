@@ -1,0 +1,59 @@
+[global]
+    monitor = 0
+    follow = none
+    width = 300
+    height = 145
+    origin = top-right
+    alignment = "left"
+    vertical_alignment = "top"
+    text_icon_padding = 15
+    separator_height = 2
+    frame_width = 2 
+    frame_color = "#1a1a1a" 
+    corner_radius = 8 
+    gap_size = 8 
+    line_height = 0 
+    notification_limit = 0 
+    idle_threshold = 120 
+    history_length = 20 
+    markup = "full" 
+    font = "JetBrains Mono 10" 
+    format = "<b>%s</b>\n%b %p" 
+    word_wrap = "yes" 
+    sort = "yes" 
+    shrink = "no" 
+    indicate_hidden = "yes" 
+    sticky_history = "false" 
+    ignore_newline = "no" 
+    show_indicators = "true" 
+    stack_duplicates = true 
+    always_run_script = true 
+    hide_duplicate_count = false 
+    ignore_dbusclose = false 
+    force_xwayland = false 
+    force_xinerama = false 
+    mouse_left_click = "close_current" 
+    mouse_middle_click = "close_all" 
+    mouse_right_click = "do_action" 
+    dmenu = tofi --prompt-text dunst: 
+   
+[experimental]
+    per_monitor_dpi = false
+
+[urgency_low]
+    background = "#1a1a1a"
+    foreground = "#EAEAEA"
+    highlight = "#268bd2"
+    timeout = 4
+
+[urgency_normal]
+    background = "#1a1a1a"
+    foreground = "#EAEAEA"
+    highlight = "#268bd2"
+    timeout = 6
+
+[urgency_critical]
+    background = "#1a1a1a"
+    foreground = "#EAEAEA"
+    highlight = "#268bd2"
+    timeout = 0

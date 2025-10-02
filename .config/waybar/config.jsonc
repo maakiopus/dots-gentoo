@@ -1,0 +1,113 @@
+// -*- mode: jsonc -*-
+{
+    "position": "bottom",
+    "height": 20,
+    "spacing": 4,
+    "reload_style_on_change": 0,
+    "modules-left": [
+		"hyprland/workspaces",
+		"hyprland/submap",
+		"mpris"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "network",
+        "cpu",
+        "memory",
+        "temperature",
+        "backlight",
+        "tray",
+        "custom/warp",
+        "idle_inhibitor",
+        "custom/dunst",
+        "clock"
+
+    ],
+    "custom/dunst": {
+	    "exec": "bash -c 'COUNT=$(dunstctl count waiting); ENABLED= ; DISABLED= ; [ $COUNT -ne 0 ] && DISABLED=\" $COUNT\"; dunstctl is-paused | grep -q false && echo $ENABLED || echo $DISABLED'",
+	    "on-click": "dunstctl set-paused toggle",
+	    "restart-interval": 1,
+	},
+
+	"custom/warp": {
+		  "format": "{}",
+		  "tooltip": false,
+		  "interval": 3,
+		  "exec": "warp-cli status | grep -q 'Connected' && echo '🛡️' || (warp-cli status | grep -q 'Disconnected' && echo '🌐' || echo '🟡')",
+		  "on-click": "warp-cli status | grep -q 'Connected' && warp-cli disconnect || (warp-cli status | grep -q 'Disconnected' && warp-cli connect)"
+	},
+
+    "hyprland/workspaces": {
+    	"enable-bar-scroll": true
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "☕",
+            "deactivated": "🛏️"
+        }
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "clock": {
+            "format": "{:%I:%M %p}",
+            "format-alt": "{:%Y-%m-%d}",
+            "tooltip-format": "<tt>{calendar}</tt>",
+            "calendar": {
+                        "mode"          : "month",
+                        "mode-mon-col"  : 3,
+                        "weeks-pos"     : "right",
+                        "on-scroll"     : 1,
+                        "on-click-right": "mode",
+                        "format": {
+                                  "months":     "<span color='#ffead3'><b>{}</b></span>",
+                                  "days":       "<span color='#ffffff'>{}</span>",
+                                  "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                                  "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                                  "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                                  }
+                        },
+            "actions":  {
+                        "on-click-right": "mode",
+                        "on-click-forward": "tz_up",
+                        "on-click-backward": "tz_down",
+                        "on-scroll-up": "shift_up",
+                        "on-scroll-down": "shift_down"
+                        }
+        },
+    "cpu": {
+        "format": "Cpu:{usage}%",
+        "tooltip": true
+    },
+    "memory": {
+        "format": "Mem:{}%"
+    },
+    "temperature": {
+        "thermal-zone": 3,
+        "format": "Temp:{temperatureC}°C"
+    },
+    "network": {
+        "format-wifi": "WiFi:{essid} ({signalStrength}%)",
+        "format-ethernet": "Eth:{ipaddr}/{cidr}",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click-right": "kitty  --class nmtui nmtui"
+    },
+    "pulseaudio": {
+        "format": "Vol:{volume}%",
+        "on-click": "kitty --class pulsemixer pulsemixer"
+    },
+    "mpris": {
+    "dynamic-order": ["title", "artist", "album"],
+    "dynamic-importance-order": ["title", "artist", "album"],
+	"format": "{dynamic}",
+	"title-len": 70,
+	"artist-len": 40,
+	"format-paused": "<i>{dynamic}</i>",
+    "on-scroll-up": "bash -c \"playerctl -p $(playerctl -l | head -n2 | tail -n1) play-pause && playerctl -p $(playerctl -l | head -n2 | tail -n1) play-pause\"",
+    "on-scroll-down": "bash -c \"playerctl -p $(playerctl -l | tail -n1) play-pause && playerctl -p $(playerctl -l | head -n2 | tail -n1) play-pause\""
+}
+}
