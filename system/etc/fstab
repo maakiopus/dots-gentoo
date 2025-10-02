@@ -1,0 +1,23 @@
+# /dev/mapper/gemto-root
+UUID=1d20b30b-5dad-4137-acab-d8cca30da69e	/         	btrfs     	rw,noatime,compress=lzo,ssd,space_cache=v2,subvolid=5,subvol=/	0 0
+
+# /dev/mapper/gemto-home
+UUID=7e28cd4d-5642-45a4-aab3-b6f29c142dfc	/home     	btrfs     	rw,noatime,compress=lzo,ssd,space_cache=v2,subvolid=5,subvol=/	0 0
+
+# /dev/sdc1 LABEL=gemtoESP
+UUID=AC26-885C      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+
+# /dev/sda1 LABEL=Macwin
+UUID=B804976104972184	/media/windows	ntfs3     	rw,lazytime,uid=1000,gid=1000,iocharset=utf8,nofail	0 0
+
+# /dev/sdd1 LABEL=SSD
+UUID=1A6CC40C6CC3E11D	/media/SSD	ntfs3     	rw,lazytime,uid=1000,gid=1000,iocharset=utf8,nofail	0 0
+
+# /dev/sdb1 LABEL=HDD
+UUID=5A143A79143A57E9	/media/HDD	ntfs3     	rw,lazytime,uid=1000,gid=1000,iocharset=utf8,nofail	0 0
+
+# /dev/mapper/gemto-swap
+UUID=d4e62134-acea-4b07-920d-e46420ab6ba0	none      	swap      	defaults,pri=1	0 0
+
+# Portage tmpfs
+tmpfs		/var/tmp/portage		tmpfs	size=30G,uid=portage,gid=portage,mode=775	0 0
